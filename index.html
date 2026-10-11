@@ -1,1 +1,45 @@
-EIU FabLab STEM
+<!doctype html>
+<!-- Published by start-tunnel.ps1 to a small public GitHub Pages repo. Contains only the current
+     tunnel link: no code, accounts or secrets. Placeholders: https://dirt-invision-grounds-throws.trycloudflare.com, 14:44 11/10/2026 -->
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>EIU FabLab STEM</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#f6f8f4; --card:#fff; --text:#1d2b22; --muted:#5b6b60; --accent:#1f5c40; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#121815; --card:#1b231e; --text:#e8efe9; --muted:#a6b5aa; --accent:#7fc79c; } }
+    body { margin:0; min-height:100dvh; display:grid; place-items:center; background:var(--bg); color:var(--text);
+           font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:16px; box-sizing:border-box; }
+    main { max-width:440px; width:100%; background:var(--card); border-radius:14px; padding:28px; box-shadow:0 8px 28px #0002; text-align:center; }
+    h1 { font-size:1.35rem; margin:0 0 8px; color:var(--accent); }
+    p { margin:8px 0; color:var(--muted); }
+    a.button { display:inline-block; margin-top:14px; padding:10px 18px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; }
+    small { display:block; margin-top:16px; color:var(--muted); }
+    [hidden] { display:none; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>EIU FabLab STEM</h1>
+  <p id="checking">Đang kết nối tới hệ thống…</p>
+  <div id="offline" hidden>
+    <p><strong>Hệ thống đang tắt hoặc đang khởi động.</strong></p>
+    <p>Vui lòng thử lại sau ít phút.</p>
+    <a class="button" href="" onclick="location.reload(); return false;">Thử lại</a>
+  </div>
+  <small>Cập nhật lúc 14:44 11/10/2026</small>
+</main>
+<script>
+  // Redirect only when the system answers: a small image from the current link must load.
+  const target = 'https://dirt-invision-grounds-throws.trycloudflare.com';
+  const probe = new Image();
+  const fail = () => { document.getElementById('checking').hidden = true; document.getElementById('offline').hidden = false; };
+  const timer = setTimeout(fail, 8000);
+  probe.onload = () => { clearTimeout(timer); location.replace(target + location.hash); };
+  probe.onerror = () => { clearTimeout(timer); fail(); };
+  probe.src = target + '/brand.png?check=' + Date.now();
+</script>
+</body>
+</html>
